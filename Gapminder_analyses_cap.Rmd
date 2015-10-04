@@ -1,0 +1,49 @@
+---
+title: "Gapminder_analysis_cap"
+author: "Renu Malhotra"
+date: "10/4/2015"
+output: html_document
+---
+
+This is an R Markdown document. 
+
+```{r, echo = FALSE, message=FALSE}
+# install.packages("dplyr")
+library("dplyr")
+```
+
+This plot shows Austria's GPD per Capita versus Year.  Austria's GPD has been steadily increasing in the past five decades.
+
+```{r, echo = FALSE}
+gap.in <- read.table("output/combined_gapMinder.tsv", sep = "\t", header = TRUE)
+austriadat <- subset(gap.in, country == "Austria")
+plot(x = austriadat$year,
+     y = austriadat$gdpPercap,
+     main = "Austria",
+     xlab = "year",
+     ylab = "GPD per capita")
+       
+```
+
+This plot shows Iraq's GPD per Capita versus Year.  The large drop in Iraq's GPD in the late 1980's illustrates the costs of wars.
+
+```{r, echo = FALSE}
+iraqdat <- subset(gap.in, country == "Iraq")
+plot(x = iraqdat$year,
+     y = iraqdat$gdpPercap,
+     main = "Iraq",
+     xlab = "year",
+     ylab = "GPD per capita")
+       
+```
+
+This plot shows Singapore's's GPD per Capita versus Year.  Singapore has experiences an exponential growth of GPD in the past five decades.
+
+```{r}
+singaporedat <- subset(gap.in, country == "Singapore")
+plot(x = singaporedat$year,
+     y = singaporedat$gdpPercap,
+     main = "Singapore",
+     xlab = "year",
+     ylab = "GPD per capita")      
+```
